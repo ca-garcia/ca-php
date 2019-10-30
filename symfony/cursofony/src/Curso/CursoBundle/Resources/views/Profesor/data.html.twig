@@ -1,0 +1,62 @@
+{% extends 'CursoBundle:Default:base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {#<link href="{{ asset('bundles/curso/css/jumbotron.css') }}" rel="stylesheet" type="text/css" />#}
+    {#<link href="{{ asset('bundles/curso/css/style.css') }}" rel="stylesheet" type="text/css" />#}
+{% endblock %}
+
+{% block title %}Detalles del Profesor!{% endblock %}
+
+{% block body %}
+
+    <div class="container pos-top">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-lg-4" style="width: 80%">
+                {#<hr>#}
+                <div class="page-header">
+                    <h1>{{  profesor }}<small>  {{ profesor.titulo }}</small></h1>
+                </div>
+                {#<h2>{{ profesor.nombre }}</h2>#}
+                <p></p>
+                <dl class="dl-horizontal">
+                    {#<dt><span class="glyphicon glyphicon-certificate"></span> T&iacute;tulo:</dt>#}
+                    {#<dd>{{ profesor.titulo }}</dd>#}
+                    <dt><span class="glyphicon glyphicon-phone-alt btn-"></span> Tel&eacute;fono:</dt>
+                    <dd>{{ profesor.telefono }}</dd>
+                    <dt><span class="glyphicon glyphicon-envelope"></span> Email:</dt>
+                    <dd>{{ profesor.email }}</dd>
+                    <dt><span class="glyphicon glyphicon-book"></span> Biograf&iacute;a:</dt>
+                    <dd>{{ profesor.biografia }}</dd>
+                </dl>
+                <h3>Cursos que imparte: </h3>
+                <dl class="dl-horizontal">
+                    {% for curso in profesor.cursos %}
+                        <hr>
+                        <dt>Nombre:</dt>
+                        <dd><a target="_blank" href="{{ path('get_curso', {'id': curso.id }) }}">{{ curso.nombre }}</a></dd>
+                        <dt>Description</dt>
+                        <dd>{{ curso.descripcion }}</dd>
+                        {#<dt>Profesor:</dt>#}
+                        {#<dd>{{ curso.profesor }}</dd>#}
+                        {#<dd>Donec id elit non mi porta gravida at eget metus.</dd>#}
+                        <dt>Fecha Inicio:</dt>
+                        <dd>{{ curso.fechai |date('d/m/Y')}}</dd>
+                        <dt>Fecha Fin:</dt>
+                        <dd>{{ curso.fechaf |date('d/m/Y')}}</dd>
+                        <dt>Hora:</dt>
+                        <dd>{{ curso.hora |date('H:i')}}</dd>
+                        <dt>Direcci&oacute;n:</dt>
+                        <dd>{{ curso.direccion }}</dd>
+                        {#<hr>#}
+                    {% endfor %}
+                </dl>
+                {#<p><a class="btn btn-default" href="#">Ver detalles &raquo;</a></p>#}
+                {#<hr>#}
+            </div>
+        </div>
+
+
+    </div> <!-- /container -->
+
+{% endblock %}

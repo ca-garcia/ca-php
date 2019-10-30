@@ -1,0 +1,71 @@
+{% extends 'CursoBundle:Admin:admin_layout.html.twig' %}
+
+{% block title %}Listado Usuarios!{% endblock %}
+
+{% block body -%}
+<div class="container pos-top">
+    <div class="page-header">
+        <h1>Listado de Usuarios<small> Administraci&oacute;n</small></h1>
+    </div>
+    <ul class="btn-new-entry">
+        <li>
+            <a class="btn btn-success" href="{{ path('admin_usuario_new') }}">A&nacute;adir nuevo usuario</a>
+        </li>
+    </ul>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                {#<th>Id</th>#}
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Dni</th>
+                <th>Direccion</th>
+                <th>Telefono</th>
+                <th>Email</th>
+                {#<th>Password</th>#}
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                {#<td><a href="{{ path('admin_usuario_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>#}
+                <td>{{ loop.index }}</td>
+                <td>{{ entity.nombre }}</td>
+                <td>{{ entity.apellidos }}</td>
+                <td>{{ entity.dni }}</td>
+                <td>{{ entity.direccion }}</td>
+                <td>{{ entity.telefono }}</td>
+                <td>{{ entity.email }}</td>
+                {#<td>{{ entity.password }}</td>#}
+                <td>
+                <ul class="btn-actions">
+                    <li>
+                        <a class="btn btn-info btn-xs" href="{{ path('admin_usuario_show', { 'id': entity.id }) }}">Datos</a>
+                    </li>
+                    <li>
+                        <a class="btn btn-warning btn-xs" href="{{ path('admin_usuario_edit', { 'id': entity.id }) }}">Editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+//            $('[data-toggle=offcanvas]').click(function() {
+            $('#admin-home').removeClass();
+            $('#lstuser').toggleClass('active');
+//            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends 'CursoBundle:Admin:admin_layout.html.twig' %}
+
+{% block title %}Editar Usuario!{% endblock %}
+
+{% block body -%}
+<div class="container pos-top">
+    <div class="page-header">
+        <h1>Editar Usuario<small> Administraci&oacute;n</small></h1>
+    </div>
+
+    {#{{ form(edit_form) }}#}
+
+    {{ form_start(edit_form) }}
+    <table>
+        <tr>
+            <td> {{ form_label(edit_form.nombre) }} </td>
+            <td> {{ form_widget(edit_form.nombre) }} </td>
+            <td> {{ form_errors(edit_form.nombre) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(edit_form.apellidos) }} </td>
+            <td> {{ form_widget(edit_form.apellidos) }} </td>
+            <td> {{ form_errors(edit_form.apellidos) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(edit_form.dni)}}</td>
+            <td> {{ form_widget(edit_form.dni) }} <div class="inline">{{ form_errors(edit_form.dni) }}</div></td>
+            {#<td> {{ form_errors(edit_form.dni) }}</td>#}
+        </tr>
+        <tr>
+            <td> {{ form_label(edit_form.direccion) }} </td>
+            <td> {{ form_widget(edit_form.direccion) }} </td>
+            <td> {{ form_errors(edit_form.direccion) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(edit_form.telefono) }} </td>
+            <td> {{ form_widget(edit_form.telefono) }} <div class="inline">{{ form_errors(edit_form.telefono) }}</div></td>
+            {#<td> {{ form_errors(edit_form.telefono) }}</td>#}
+        </tr>
+        <tr>
+            <td> {{ form_label(edit_form.email) }} </td>
+            <td> {{ form_widget(edit_form.email) }} <div class="inline">{{ form_errors(edit_form.email) }}</div></td>
+            {#<td> {{ form_errors(edit_form.email) }}</td>#}
+        </tr>
+        <tr>
+            <td> {{ form_label(edit_form.password) }} </td>
+            <td> {{ form_widget(edit_form.password) }} <div class="inline">{{ form_errors(edit_form.password) }}</div></td>
+            {#<td> {{ form_errors(edit_form.password) }}</td>#}
+        </tr>
+        <tr>
+            <td> {{ form_label(edit_form.cursos) }} </td>
+            <td> {{ form_widget(edit_form.cursos) }} </td>
+            <td> {{ form_errors(edit_form.cursos) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_widget(edit_form.Update) }} </td>
+            <td>
+                <a class="btn btn-xs btn-primary" href="{{ path('admin_usuario') }}">Regresar al listado</a>
+            </td>
+        </tr>
+    </table>
+
+    {{ form_end(edit_form) }}
+
+    <div style="margin-top: 6px"> {{ form(delete_form) }} </div>
+
+    {#<ul class="record_actions">#}
+        {#<li>#}
+            {#<a href="{{ path('admin_usuario') }}">Back to the list</a>#}
+        {#</li>#}
+        {#<li>{{ form(delete_form) }}</li>#}
+    {#</ul>#}
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+//            $('[data-toggle=offcanvas]').click(function() {
+            $('#admin-home').removeClass();
+//            $('#lstuser').toggleClass('active');
+//            });
+        });
+    </script>
+{% endblock %}

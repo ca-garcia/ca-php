@@ -1,0 +1,66 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Carlos
+ * Date: 21/11/15
+ */
+
+namespace Curso\CursoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * @ORM\Entity(repositoryClass="Curso\CursoBundle\Entity\ProfesorRepository")
+ * @ORM\Table(name="profesor")
+ */
+class Profesor
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank()
+     */
+    protected $nombre;
+
+    /**
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank()
+     */
+    protected $apellidos;
+
+    /**
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank()
+     */
+    protected $titulo;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $biografia;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $telefono;
+
+    /**
+     * @ORM\Column(type="string")
+     * @Assert\Email()
+     */
+    protected $email;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Curso", mappedBy="profesor")
+     */
+    protected $cursos;
+
+
+}

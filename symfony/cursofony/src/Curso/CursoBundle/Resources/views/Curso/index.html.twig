@@ -1,0 +1,81 @@
+{% extends 'CursoBundle:Admin:admin_layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {#<link href="{{ asset('bundles/curso/css/style.css') }}" rel="stylesheet" type="text/css" />#}
+    <style>
+        /*li{*/
+            /*list-style: none;*/
+            /*margin-bottom: 5px;*/
+        /*}*/
+    </style>
+{% endblock %}
+
+{% block title %}Listado Cursos!{% endblock %}
+
+{% block body -%}
+<div class="container pos-top">
+    {#<h1>Curso list</h1>#}
+    <div class="page-header">
+        <h1>Listado de Cursos<small> Administraci&oacute;n</small></h1>
+    </div>
+    <ul class="btn-new-entry">
+        <li>
+            <a class="btn btn-success" href="{{ path('curso_new') }}">A&nacute;adir nuevo curso</a>
+        </li>
+    </ul>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                {#<th>Id</th>#}
+                <th>Nombre</th>
+                <th>Descripci&oacute;n</th>
+                <th>Fecha Inicio</th>
+                <th>Fecha Fin</th>
+                <th>Hora</th>
+                <th>Direcci&oacute;n</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                {#<td><a href="{{ path('curso_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>#}
+                <td>{{ loop.index }}</td>
+                {#<td>{{ entity.id }}</td>#}
+                <td>{{ entity.nombre }}</td>
+                <td>{{ entity.descripcion }}</td>
+                <td>{% if entity.fechai %}{{ entity.fechai|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if entity.fechaf %}{{ entity.fechaf|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ entity.hora |date('H:i') }}</td>
+                <td>{{ entity.direccion }}</td>
+                <td>
+                <ul class="btn-actions">
+                    <li>
+                        <a class="btn btn-info btn-xs" href="{{ path('curso_show', { 'id': entity.id }) }}">Datos</a>
+                    </li>
+                    <li>
+                        <a class="btn btn-warning btn-xs" href="{{ path('curso_edit', { 'id': entity.id }) }}">Editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+<script type="text/javascript">
+    $(document).ready(function() {
+//            $('[data-toggle=offcanvas]').click(function() {
+        $('#admin-home').removeClass();
+        $('#lstcursos').toggleClass('active');
+//            });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'CursoBundle:Admin:admin_layout.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {#<link href="{{ asset('bundles/curso/css/jumbotron.css') }}" rel="stylesheet" type="text/css" />#}
+    {#<link href="{{ asset('bundles/curso/css/style.css') }}" rel="stylesheet" type="text/css" />#}
+{% endblock %}
+
+{% block title %} Usuario Nuevo !{% endblock %}
+
+{% block body -%}
+
+<div class="container pos-top">
+    <div class="page-header">
+        <h1>Usuario Nuevo<small> Administraci&oacute;n</small></h1>
+    </div>
+
+    {#{{ form(form) }}#}
+    {{ form_start(form) }}
+
+    <table>
+        <tr>
+            <td> {{ form_label(form.nombre) }} </td>
+            <td> {{ form_widget(form.nombre) }} </td>
+            <td> {{ form_errors(form.nombre) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.apellidos) }} </td>
+            <td> {{ form_widget(form.apellidos) }} </td>
+            <td> {{ form_errors(form.apellidos) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.dni) }} </td>
+            <td> {{ form_widget(form.dni) }} </td>
+            <td> {{ form_errors(form.dni) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.direccion) }} </td>
+            <td> {{ form_widget(form.direccion) }} </td>
+            <td> {{ form_errors(form.direccion) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.telefono) }} </td>
+            <td> {{ form_widget(form.telefono) }} </td>
+            <td> {{ form_errors(form.telefono) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.email) }} </td>
+            <td> {{ form_widget(form.email) }} </td>
+            <td> {{ form_errors(form.email) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.password) }} </td>
+            <td> {{ form_widget(form.password) }} </td>
+            <td> {{ form_errors(form.password) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.cursos) }} </td>
+            <td> {{ form_widget(form.cursos) }} </td>
+            <td> {{ form_errors(form.cursos) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_widget(form.Insertar) }} </td>
+            <td>
+                <a class="btn btn-sm btn-primary" href="{{ path('admin_usuario') }}">Regresar al listado</a>
+            </td>
+        </tr>
+    </table>
+
+    {{ form_end(form) }}
+
+    {#<ul class="record_actions">#}
+        {#<li>#}
+        {#<a href="{{ path('admin_usuario') }}">#}
+            {#Back to the list#}
+        {#</a>#}
+        {#</li>#}
+    {#</ul>#}
+
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+//            $('[data-toggle=offcanvas]').click(function() {
+            $('#admin-home').removeClass();
+            $('#new-user').toggleClass('active');
+//            });
+        });
+    </script>
+{% endblock %}

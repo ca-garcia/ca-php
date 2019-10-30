@@ -1,0 +1,84 @@
+{% extends 'CursoBundle:Admin:admin_layout.html.twig' %}
+
+{% block title %}Datos del Usuario!{% endblock %}
+
+{% block body -%}
+<div class="container pos-top">
+    <div class="page-header">
+        <h1>Datos del Usuario<small> Administraci&oacute;n</small></h1>
+    </div>
+
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>ID:</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre:</th>
+                <td>{{ entity.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Apellidos:</th>
+                <td>{{ entity.apellidos }}</td>
+            </tr>
+            <tr>
+                <th>DNI:</th>
+                <td>{{ entity.dni }}</td>
+            </tr>
+            <tr>
+                <th>Direcci&oacute;n:</th>
+                <td>{{ entity.direccion }}</td>
+            </tr>
+            <tr>
+                <th>Tel&eacute;fono:</th>
+                <td>{{ entity.telefono }}</td>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <td>{{ entity.email }}</td>
+            </tr>
+            <tr>
+                <th>Password:</th>
+                <td>{{ entity.password }}</td>
+            </tr>
+            <tr>
+                <th>Acciones:</th>
+                <td>
+                    <a class="btn-sm btn-warning" href="{{ path('admin_usuario_edit', { 'id': entity.id }) }}">Editar</a>
+                    <a class="btn-sm btn-info" href="{{ path('admin_usuario') }}">Regresar a la lista</a>
+                    <div style="display: inline-block">{{ form(delete_form) }}</div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    {#<ul class="record_actions">#}
+    {#<li>#}
+        {#<a href="{{ path('admin_usuario') }}">#}
+            {#Back to the list#}
+        {#</a>#}
+    {#</li>#}
+    {#<li>#}
+        {#<a href="{{ path('admin_usuario_edit', { 'id': entity.id }) }}">#}
+            {#Edit#}
+        {#</a>#}
+    {#</li>#}
+    {#<li>{{ form(delete_form) }}</li>#}
+    {#</ul>#}
+
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+//            $('[data-toggle=offcanvas]').click(function() {
+            $('#admin-home').removeClass();
+//            $('#lstuser').toggleClass('active');
+//            });
+        });
+    </script>
+{% endblock %}

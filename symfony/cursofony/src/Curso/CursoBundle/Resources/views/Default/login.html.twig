@@ -1,0 +1,94 @@
+{% extends 'CursoBundle:Default:base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/curso/css/signin.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('bundles/curso/notification/css/normalize.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('bundles/curso/notification/css/ns-default.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('bundles/curso/notification/css/ns-style-growl.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('bundles/curso/css/notification.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+    <div class="container pos-top">
+        {#{% if error is not empty %}#}
+            {#{{ error.message }}#}
+        {#{% endif %}#}
+
+        <form class="form-signin" action="{{ path('check_path') }}" method="POST">
+            <h2 class="form-signin-heading">Autent&iacute;quese </h2>
+            <input name="_username" type="text" class="form-control" placeholder="Email" value="{{ last_username }}" autofocus>
+            <input name="_password" type="password" class="form-control" placeholder="Password">
+            {#<label class="checkbox">#}
+                {#<input type="checkbox" value="remember-me"> Remember me#}
+            {#</label>#}
+            <button class="btn btn-lg btn-success btn-block" type="submit">Login</button>
+        </form>
+
+    </div> <!-- /container -->
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/curso/notification/js/modernizr.custom.js') }}"> </script>
+    <script src="{{ asset('bundles/curso/notification/js/classie.js') }}"> </script>
+    <script src="{{ asset('bundles/curso/notification/js/notificationFx.js') }}"> </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#menu-portada').removeClass();
+
+            function showNotification( msg )
+            {
+                setTimeout( function() {
+                    // create the notification
+                    var notification = new NotificationFx({
+//                    message : '<p>Hello there! I\'m a classic notification but I have some elastic jelliness thanks to <a href="http://bouncejs.com/">bounce.js</a>. </p>',
+//                        message: '<p> msg </p>',
+                        message: msg,
+                        layout : 'growl',
+                        effect : 'jelly',
+                        type : 'notice', // notice, warning, error or success
+                        ttl: 10000, // time to dismiss
+                        onClose : function() {
+//                        bttn.disabled = false;
+                        }
+                    });
+
+                    // show the notification
+                    notification.show();
+                }, 600 );
+            }
+
+            {#{% set notification = 'El usuario se ha registrado correctamente! Por favor autent&iacute;quese.' %}#}
+
+            {% if notification is not empty %}
+                showNotification( '<p>{{ notification |raw }}</p>' );
+            {% elseif error is not empty %}
+                showNotification('<p>{{ error |raw }}</p>');
+                {#showNotification('{{ error.message }}');#}
+
+            {#setTimeout( function() {#}
+                {#// create the notification#}
+                {#var notification = new NotificationFx({#}
+{#//                    message : '<p>Hello there! I\'m a classic notification but I have some elastic jelliness thanks to <a href="http://bouncejs.com/">bounce.js</a>. </p>',#}
+                    {#message: '<p> {{ error |raw }} </p>',#}
+                    {#layout : 'growl',#}
+                    {#effect : 'jelly',#}
+                    {#type : 'notice', // notice, warning, error or success#}
+                    {#ttl: 10000, // time to dismiss#}
+                    {#onClose : function() {#}
+{#//                        bttn.disabled = false;#}
+                    {#}#}
+                {#});#}
+
+                {#// show the notification#}
+                {#notification.show();#}
+            {#}, 600 );#}
+            {% endif %}
+
+
+        });
+    </script>
+{% endblock %}

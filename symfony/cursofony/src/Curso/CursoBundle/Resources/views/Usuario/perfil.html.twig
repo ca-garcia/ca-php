@@ -1,0 +1,132 @@
+{% extends 'CursoBundle:Default:base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/curso/notification/css/normalize.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('bundles/curso/notification/css/ns-default.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('bundles/curso/notification/css/ns-style-growl.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('bundles/curso/css/notification.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block title %}Perfil de Usuario!{% endblock %}
+
+{% block body %}
+
+    <div class="container pos-top">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-lg-4" style="width: 80%">
+                {#<hr>#}
+                <div class="page-header">
+                    <h1>{{ usuario }}<small> Perfil</small></h1>
+                </div>
+                {#<h2>{{ usuario.nombre }}</h2>#}
+                <p></p>
+                <dl class="dl-horizontal">
+                    <dt><span class="glyphicon glyphicon-tag"></span> DNI:</dt>
+                    <dd>{{ usuario.dni }}</dd>
+                    <dt><span class="glyphicon glyphicon-phone-alt"></span> Tel&eacute;fono:</dt>
+                    <dd>{{ usuario.telefono }}</dd>
+                    <dt><span class="glyphicon glyphicon-envelope"></span> Email:</dt>
+                    <dd>{{ usuario.email }}</dd>
+                    <dt><span class="glyphicon glyphicon-map-marker"></span> Direcci&oacute;n:</dt>
+                    <dd>{{ usuario.direccion }}
+                        <p class="pos-right"><a class="btn btn-sm btn-primary" href="{{ path('usuario_edit', {'id': usuario.id }) }}">Editar perfil</a></p>
+                    </dd>
+                </dl>
+                <h3>Cursos inscritos: </h3>
+                <dl class="dl-horizontal">
+                    {% for curso in usuario.cursos %}
+                        <hr>
+                        <dt>Nombre:</dt>
+                        <dd><a target="_blank" href="{{ path('get_curso', {'id': curso.id }) }}">{{ curso.nombre }}</a></dd>
+                        {#<dt>Description</dt>#}
+                        {#<dd>{{ curso.descripcion }}</dd>#}
+                        <dt>Profesor:</dt>
+                        {% if curso.profesor is not empty %}
+                        <dd>{{ curso.profesor }}</dd>
+                        {% else %}
+                        <dd><b><em>Sin profesor</em></b></dd>
+                        {% endif %}
+                        <dt>Fecha Inicio:</dt>
+                        <dd>{{ curso.fechai |date('d/m/Y')}}</dd>
+                        <dt>Fecha Fin:</dt>
+                        <dd>{{ curso.fechaf |date('d/m/Y')}}</dd>
+                        {#<dt>Hora:</dt>#}
+                        {#<dd>{{ curso.hora |date('H:i')}}</dd>#}
+                        {#<dt>Direcci&oacute;n:</dt>#}
+                        {#<dd>{{ curso.direccion }}</dd>#}
+                        {#<hr>#}
+                    {% endfor %}
+                </dl>
+                {#<hr>#}
+            </div>
+        </div>
+
+
+    </div> <!-- /container -->
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/curso/notification/js/modernizr.custom.js') }}"> </script>
+    <script src="{{ asset('bundles/curso/notification/js/classie.js') }}"> </script>
+    <script src="{{ asset('bundles/curso/notification/js/notificationFx.js') }}"> </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#menu-portada').removeClass();
+
+            function showNotification( msg )
+            {
+                setTimeout( function() {
+                    // create the notification
+                    var notification = new NotificationFx({
+//                    message : '<p>Hello there! I\'m a classic notification but I have some elastic jelliness thanks to <a href="http://bouncejs.com/">bounce.js</a>. </p>',
+//                        message: '<p> msg </p>',
+                        message: msg,
+                        layout : 'growl',
+                        effect : 'jelly',
+                        type : 'notice', // notice, warning, error or success
+                        ttl: 10000, // time to dismiss
+                        onClose : function() {
+//                        bttn.disabled = false;
+                        }
+                    });
+
+                    // show the notification
+                    notification.show();
+                }, 600 );
+            }
+
+            {#{% set notification = 'El usuario se ha registrado correctamente! Por favor autent&iacute;quese.' %}#}
+
+            {% if notification is not empty %}
+            showNotification( '<p>{{ notification |raw }}</p>' );
+            {#{% elseif error is not empty %}#}
+            {#showNotification('<p>{{ error |raw }}</p>');#}
+            {#showNotification('{{ error.message }}');#}
+
+            {#setTimeout( function() {#}
+            {#// create the notification#}
+            {#var notification = new NotificationFx({#}
+            {#//                    message : '<p>Hello there! I\'m a classic notification but I have some elastic jelliness thanks to <a href="http://bouncejs.com/">bounce.js</a>. </p>',#}
+            {#message: '<p> {{ error |raw }} </p>',#}
+            {#layout : 'growl',#}
+            {#effect : 'jelly',#}
+            {#type : 'notice', // notice, warning, error or success#}
+            {#ttl: 10000, // time to dismiss#}
+            {#onClose : function() {#}
+            {#//                        bttn.disabled = false;#}
+            {#}#}
+            {#});#}
+
+            {#// show the notification#}
+            {#notification.show();#}
+            {#}, 600 );#}
+            {% endif %}
+
+
+        });
+    </script>
+{% endblock %}

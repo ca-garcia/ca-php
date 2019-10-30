@@ -1,0 +1,94 @@
+{% extends 'CursoBundle:Admin:admin_layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/curso/css/form.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block title %}Editar Curso!{% endblock %}
+
+{% block body -%}
+<div class="container pos-top">
+    <div class="page-header">
+        <h1>Editar Curso<small> Administraci&oacute;n</small></h1>
+    </div>
+
+    {#{{ form(edit_form) }}#}
+
+    {{ form_start(edit_form) }}
+    <table>
+        <tr>
+            <td> {{ form_label(edit_form.nombre) }} </td>
+            <td> {{ form_widget(edit_form.nombre) }} </td>
+            <td> {{ form_errors(edit_form.nombre) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(edit_form.descripcion) }} </td>
+            <td> {{ form_widget(edit_form.descripcion) }} </td>
+            <td> {{ form_errors(edit_form.descripcion) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(edit_form.fechai)}}</td>
+            <td> {{ form_widget(edit_form.fechai) }}</td>
+            <td> {{ form_errors(edit_form.fechai) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(edit_form.fechaf) }} </td>
+            <td> {{ form_widget(edit_form.fechaf) }} </td>
+            <td> {{ form_errors(edit_form.fechaf) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(edit_form.hora) }} </td>
+            <td> {{ form_widget(edit_form.hora) }}</td>
+            <td> {{ form_errors(edit_form.hora) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(edit_form.direccion) }} </td>
+            <td> {{ form_widget(edit_form.direccion) }}</td>
+            <td> {{ form_errors(edit_form.direccion) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(edit_form.profesor) }} </td>
+            <td> {{ form_widget(edit_form.profesor) }}</td>
+            <td> {{ form_errors(edit_form.profesor) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(edit_form.usuarios) }} </td>
+            <td> {{ form_widget(edit_form.usuarios) }} </td>
+            <td> {{ form_errors(edit_form.usuarios) }} </td>
+        </tr>
+        <tr>
+            <td> {{ form_widget(edit_form.Update) }}</td>
+            {#<td> <a class="btn btn-danger" href="{{ path('curso_delete', {'id': entity.id }) }}">Eliminar</a> </td>#}
+            <td>
+                <a class="btn-sm btn-primary" href="{{ path('curso') }}">Regresar al listado</a>
+            </td>
+        </tr>
+    </table>
+
+    {{ form_end(edit_form) }}
+
+    <div style="margin-top: 6px"> {{ form(delete_form) }} </div>
+
+    {#<ul class="record_actions">#}
+    {#<li>#}
+        {#<a href="{{ path('curso') }}">Back to the list</a>#}
+    {#</li>#}
+    {#<li>{{ form(delete_form) }}</li>#}
+    {#</ul>#}
+
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+//            $('[data-toggle=offcanvas]').click(function() {
+            $('#admin-home').removeClass();
+//            $('#new-curso').toggleClass('active');
+//            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,83 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Carlos
+ * Date: 21/11/15
+ */
+
+namespace Curso\CursoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * @ORM\Entity(repositoryClass="Curso\CursoBundle\Entity\CursoRepository")
+ * @ORM\Table(name="curso")
+ */
+class Curso
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    /**
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank()
+     */
+    protected $nombre;
+
+    /**
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank()
+     */
+    protected $descripcion;
+
+    /**
+     * @ORM\Column(type="date")
+     * @Assert\NotBlank()
+     */
+    protected $fechai;
+    /**
+     * @ORM\Column(type="date")
+     * @Assert\NotBlank()
+     */
+    protected $fechaf;
+
+    /**
+     * @ORM\Column(type="time")
+     * @Assert\NotBlank()
+     */
+    protected $hora;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $duracion;
+
+    /**
+     * @ORM\Column(type="string", length=2)
+     * @Assert\NotBlank()
+     */
+    protected $idioma;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Profesor", inversedBy="cursos")
+     * @ORM\JoinColumn(name="profesor_id", referencedColumnName="id")
+     */
+    protected $profesor;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Usuario", inversedBy="ponencias")
+     * @ORM\JoinTable(
+     *      name="ponencia_usuario",
+     *      joinColumns={@ORM\JoinColumn(name="ponencia_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="usuario_id", referencedColumnName="id")}
+     *      )
+     */
+    protected  $usuarios;
+
+
+}

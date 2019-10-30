@@ -1,0 +1,113 @@
+{% extends 'CursoBundle:Default:base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/curso/css/form.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block title %} Registrarse!{% endblock %}
+
+{% block body -%}
+    <style>
+        .inline{display: inline-flex}
+    </style>
+
+<div class="container pos-top">
+    <div class="page-header">
+        <h1>Usuario Nuevo<small> Registrar</small></h1>
+    </div>
+
+    {#<form class="form-horizontal">#}
+        {#<div class="control-group">#}
+            {#<label class="control-label" for="inputEmail">Email</label>#}
+            {#<div class="controls">#}
+                {#<input type="text" id="inputEmail" placeholder="Email">#}
+            {#</div>#}
+        {#</div>#}
+        {#<div class="control-group">#}
+            {#<label class="control-label" for="inputPassword">Password</label>#}
+            {#<div class="controls">#}
+                {#<input type="password" id="inputPassword" placeholder="Password">#}
+            {#</div>#}
+        {#</div>#}
+        {#<div class="control-group">#}
+            {#<div class="controls">#}
+                {#<label class="checkbox">#}
+                    {#<input type="checkbox"> Remember me#}
+                {#</label>#}
+                {#<button type="submit" class="btn">Sign in</button>#}
+            {#</div>#}
+        {#</div>#}
+    {#</form>#}
+
+    {{ form_start(form) }}
+    <table>
+        <tr>
+            <td> {{ form_label(form.nombre) }} </td>
+            <td> {{ form_widget(form.nombre) }} </td>
+            <td> {{ form_errors(form.nombre) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.apellidos) }} </td>
+            <td> {{ form_widget(form.apellidos) }} </td>
+            <td> {{ form_errors(form.apellidos) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.dni)}}</td>
+            <td> {{ form_widget(form.dni) }} <div class="inline">{{ form_errors(form.dni) }}</div></td>
+            {#<td> {{ form_errors(form.dni) }}</td>#}
+        </tr>
+        <tr>
+            <td> {{ form_label(form.direccion) }} </td>
+            <td> {{ form_widget(form.direccion) }} </td>
+            <td> {{ form_errors(form.direccion) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.telefono) }} </td>
+            <td> {{ form_widget(form.telefono) }} <div class="inline">{{ form_errors(form.telefono) }}</div></td>
+            {#<td> {{ form_errors(form.telefono) }}</td>#}
+        </tr>
+        <tr>
+            <td> {{ form_label(form.email) }} </td>
+            <td> {{ form_widget(form.email) }} <div class="inline">{{ form_errors(form.email) }}</div></td>
+            {#<td> {{ form_errors(form.email) }}</td>#}
+        </tr>
+        <tr>
+            <td> {{ form_label(form.password) }} </td>
+            <td> {{ form_widget(form.password) }} <div class="inline">{{ form_errors(form.password) }}</div></td>
+            {#<td> {{ form_errors(form.password) }}</td>#}
+        </tr>
+        <tr>
+            <td> {{ form_label(form.cursos) }} </td>
+            <td> {{ form_widget(form.cursos) }} </td>
+            <td> {{ form_errors(form.cursos) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_widget(form.Registrar) }} </td>
+            <td> {{ form_widget(form.Resetear) }} </td>
+        </tr>
+    </table>
+    {{ form_end(form) }}
+
+    {#{{ form(form) }}#}
+
+    {#<ul class="record_actions">#}
+        {#<li>#}
+            {#<a href="{{ path('usuario') }}">Back to the list</a>#}
+        {#</li>#}
+    {#</ul>#}
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+//            $('[data-toggle=offcanvas]').click(function() {
+//            $('#menu-contacto').toggleClass('active');
+            $('#menu-portada').removeClass();
+//            });
+        });
+    </script>
+{% endblock %}

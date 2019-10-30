@@ -1,0 +1,12 @@
+.ns-growl{
+    left: inherit;
+    right: 30px !important;
+    top: 120px;
+}
+.ns-box{
+    background: rgba(42, 45, 50, 0.85) none repeat scroll 0 0;
+    z-index: 1050;
+}
+.ns-effect-jelly {
+    max-width: 311px;
+}

@@ -1,0 +1,30 @@
+profesor:
+    path:     /
+    defaults: { _controller: "CursoBundle:Profesor:index" }
+
+profesor_show:
+    path:     /{id}/show
+    defaults: { _controller: "CursoBundle:Profesor:show" }
+
+profesor_new:
+    path:     /new
+    defaults: { _controller: "CursoBundle:Profesor:new" }
+
+profesor_create:
+    path:     /create
+    defaults: { _controller: "CursoBundle:Profesor:create" }
+    methods:  POST
+
+profesor_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CursoBundle:Profesor:edit" }
+
+profesor_update:
+    path:     /{id}/update
+    defaults: { _controller: "CursoBundle:Profesor:update" }
+    methods:  [POST, PUT]
+
+profesor_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CursoBundle:Profesor:delete" }
+    methods:  [POST, DELETE]

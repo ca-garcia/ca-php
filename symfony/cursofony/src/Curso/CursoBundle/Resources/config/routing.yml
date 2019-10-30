@@ -1,0 +1,66 @@
+curso_usuario:
+    resource: "@CursoBundle/Resources/config/routing/usuario.yml"
+    prefix:   /usuario
+
+curso_admin_usuario:
+    resource: "@CursoBundle/Resources/config/routing/admin_usuario.yml"
+    prefix:   /admin/usuario
+
+curso_profesor:
+    resource: "@CursoBundle/Resources/config/routing/profesor.yml"
+    prefix:   /admin/profesor
+
+curso_curso:
+    resource: "@CursoBundle/Resources/config/routing/curso.yml"
+    prefix:   /admin/curso
+
+#curso_homepage:
+#    path:     /hello/{name}
+#    defaults: { _controller: CursoBundle:Default:index }
+
+#------------       CURSO      -------------------
+curso_list:
+    path:     /curso/list
+    defaults: { _controller: "CursoBundle:Default:list" }
+
+get_curso:
+    path:     /curso/{id}
+    defaults: { _controller: "CursoBundle:Default:getCurso" }
+
+#------------       PROFESOR      -------------------
+get_profesor:
+    path:     /profesor/{id}
+    defaults: { _controller: "CursoBundle:Default:getProfesor" }
+
+#------------       SITIO      -------------------
+home:
+    path:     /
+    defaults: { _controller: CursoBundle:Default:index }
+
+static:
+  path: /sitio/{nombre}
+  defaults: { _controller: CursoBundle:Default:static }
+
+login:
+    path:     /login
+    defaults: { _controller: CursoBundle:Default:login }
+
+check_path:
+    path: /check
+
+logout:
+    path: /logout
+
+admin:
+    path: /admin
+    defaults: { _controller: "CursoBundle:Default:admin" }
+
+admin_login:
+    path:     /admin/login
+    defaults: { _controller: CursoBundle:Default:login }
+
+admin_check:
+    path: /admin/check
+
+admin_logout:
+    path: /admin/logout

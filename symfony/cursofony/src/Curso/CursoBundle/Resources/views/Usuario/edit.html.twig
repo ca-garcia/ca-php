@@ -1,0 +1,77 @@
+{% extends 'CursoBundle:Default:base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/curso/css/form.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block title %}Editar Perfil de Usuario!{% endblock %}
+
+{% block body -%}
+
+<div class="container pos-top">
+    <div class="page-header">
+        <h1>Editar Perfil<small> Usuario</small></h1>
+    </div>
+
+    {#{{ form(edit_form) }}#}
+
+    {{ form_start(edit_form) }}
+    <table>
+        <tr>
+            <td> {{ form_label(edit_form.nombre) }} </td>
+            <td> {{ form_widget(edit_form.nombre) }} </td>
+            <td> {{ form_errors(edit_form.nombre) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(edit_form.apellidos) }} </td>
+            <td> {{ form_widget(edit_form.apellidos) }} </td>
+            <td> {{ form_errors(edit_form.apellidos) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(edit_form.dni)}}</td>
+            <td> {{ form_widget(edit_form.dni) }} <div class="inline">{{ form_errors(edit_form.dni) }}</div></td>
+            {#<td> {{ form_errors(edit_form.dni) }}</td>#}
+        </tr>
+        <tr>
+            <td> {{ form_label(edit_form.direccion) }} </td>
+            <td> {{ form_widget(edit_form.direccion) }} </td>
+            <td> {{ form_errors(edit_form.direccion) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(edit_form.telefono) }} </td>
+            <td> {{ form_widget(edit_form.telefono) }} <div class="inline">{{ form_errors(edit_form.telefono) }}</div></td>
+            {#<td> {{ form_errors(edit_form.telefono) }}</td>#}
+        </tr>
+        <tr>
+            <td> {{ form_label(edit_form.email) }} </td>
+            <td> {{ form_widget(edit_form.email) }} <div class="inline">{{ form_errors(edit_form.email) }}</div></td>
+            {#<td> {{ form_errors(edit_form.email) }}</td>#}
+        </tr>
+        <tr>
+            <td> {{ form_label(edit_form.password) }} </td>
+            <td> {{ form_widget(edit_form.password) }} <div class="inline">{{ form_errors(edit_form.password) }}</div></td>
+            {#<td> {{ form_errors(edit_form.password) }}</td>#}
+        </tr>
+        <tr>
+            <td> {{ form_label(edit_form.cursos) }} </td>
+            <td> {{ form_widget(edit_form.cursos) }} </td>
+            <td> {{ form_errors(edit_form.cursos) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_widget(edit_form.Guardar) }} </td>
+            <td> <a class="btn btn-primary" href="{{ path('perfil') }}">Regresar al perfil</a> </td>
+        </tr>
+    </table>
+
+    {#<ul class="record_actions">#}
+        {#<li>#}
+        {#<a class="btn btn-sm btn-primary" href="{{ path('perfil') }}">Regresar al perfil</a>#}
+        {#</li>#}
+        {#&#123;&#35;<li>{{ form(delete_form) }}</li>&#35;&#125;#}
+    {#</ul>#}
+
+
+    {{ form_end(edit_form) }}
+</div>
+{% endblock %}

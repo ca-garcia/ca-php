@@ -1,0 +1,68 @@
+{% extends 'CursoBundle:Admin:admin_layout.html.twig' %}
+
+{% block title %}Listado Profesores!{% endblock %}
+
+{% block body -%}
+<div class="container pos-top">
+    <div class="page-header">
+        <h1>Listado de Profesores<small> Administraci&oacute;n</small></h1>
+    </div>
+    <ul class="btn-new-entry">
+        <li>
+            <a class="btn btn-success" href="{{ path('profesor_new') }}">A&nacute;adir nuevo profesor</a>
+        </li>
+    </ul>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                {#<th>Id</th>#}
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Titulo</th>
+                <th>Biografia</th>
+                <th>Telefono</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                {#<td><a href="{{ path('profesor_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>#}
+                <td>{{ entity.nombre }}</td>
+                <td>{{ entity.apellidos }}</td>
+                <td>{{ entity.titulo }}</td>
+                <td>{{ entity.biografia }}</td>
+                <td>{{ entity.telefono }}</td>
+                <td>{{ entity.email }}</td>
+                <td>
+                <ul class="btn-actions">
+                    <li>
+                        <a class="btn btn-info btn-xs" href="{{ path('profesor_show', { 'id': entity.id }) }}">Datos</a>
+                    </li>
+                    <li>
+                        <a class="btn btn-warning btn-xs" href="{{ path('profesor_edit', { 'id': entity.id }) }}">Editar</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+//            $('[data-toggle=offcanvas]').click(function() {
+            $('#admin-home').removeClass();
+            $('#lstprof').toggleClass('active');
+//            });
+        });
+    </script>
+{% endblock %}

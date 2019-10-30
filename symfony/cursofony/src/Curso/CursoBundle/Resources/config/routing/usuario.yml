@@ -1,0 +1,38 @@
+usuario:
+    path:     /
+    defaults: { _controller: "CursoBundle:Usuario:index" }
+
+usuario_show:
+    path:     /{id}/show
+    defaults: { _controller: "CursoBundle:Usuario:show" }
+
+usuario_new:
+    path:     /new
+    defaults: { _controller: "CursoBundle:Usuario:new" }
+
+usuario_create:
+    path:     /create
+    defaults: { _controller: "CursoBundle:Usuario:create" }
+    methods:  POST
+
+usuario_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "CursoBundle:Usuario:edit" }
+
+usuario_update:
+    path:     /{id}/update
+    defaults: { _controller: "CursoBundle:Usuario:update" }
+    methods:  [POST, PUT]
+
+usuario_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "CursoBundle:Usuario:delete" }
+    methods:  [POST, DELETE]
+
+perfil:
+    path: /perfil
+    defaults: { _controller: CursoBundle:Usuario:perfil }
+
+inscription:
+    path: /inscripcion/{userid}/{cursoid}
+    defaults: { _controller: CursoBundle:Usuario:inscripcion }

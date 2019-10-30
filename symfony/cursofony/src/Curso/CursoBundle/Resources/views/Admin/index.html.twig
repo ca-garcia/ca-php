@@ -1,0 +1,29 @@
+{% extends 'CursoBundle:Admin:admin_layout.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {#<link href="{{ asset('bundles/curso/css/style.css') }}" rel="stylesheet" type="text/css" />#}
+    <style>
+        p{
+            text-align: justify;
+            margin: 20px;
+        }
+    </style>
+{% endblock %}
+
+{% block body -%}
+<div class="container pos-top">
+    {#<div class="page-header">#}
+        {#<h1>Listado de Cursos<small> Administraci&oacute;n</small></h1>#}
+    {#</div>#}
+
+    <div class="jumbotron">
+        <h1>Hello, {{ app.user }}!</h1>
+        <p>Bienvenido a la pagina de administracion del Sitio. A traves de esta herramienta podras ver, editar, adicionar y eliminar contenidos a nuestra web.</p>
+
+    </div>
+    <blockquote class="pull-right">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        <small>Someone famous <cite title="Source Title">Source Title</cite></small>
+    </blockquote>
+</div>
+{% endblock %}

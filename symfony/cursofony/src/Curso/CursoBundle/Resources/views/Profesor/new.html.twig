@@ -1,0 +1,80 @@
+{% extends 'CursoBundle:Admin:admin_layout.html.twig' %}
+
+{% block title %}Nuevo Profesor!{% endblock %}
+
+{% block body -%}
+<div class="container pos-top">
+    <div class="page-header">
+        <h1>Nuevo Profesor<small> Administraci&oacute;n</small></h1>
+    </div>
+
+    {#{{ form(form) }}#}
+    {{ form_start(form) }}
+
+    <table>
+        <tr>
+            <td> {{ form_label(form.nombre) }} </td>
+            <td> {{ form_widget(form.nombre) }} </td>
+            <td> {{ form_errors(form.nombre) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.apellidos) }} </td>
+            <td> {{ form_widget(form.apellidos) }} </td>
+            <td> {{ form_errors(form.apellidos) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.titulo) }} </td>
+            <td> {{ form_widget(form.titulo) }} </td>
+            <td> {{ form_errors(form.titulo) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.biografia) }} </td>
+            <td> {{ form_widget(form.biografia) }} </td>
+            <td> {{ form_errors(form.biografia) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.telefono) }} </td>
+            <td> {{ form_widget(form.telefono) }} </td>
+            <td> {{ form_errors(form.telefono) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.email) }} </td>
+            <td> {{ form_widget(form.email) }} </td>
+            <td> {{ form_errors(form.email) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.cursos) }} </td>
+            <td> {{ form_widget(form.cursos) }} </td>
+            <td> {{ form_errors(form.cursos) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_widget(form.Insertar) }} </td>
+            <td>
+                <a class="btn btn-sm btn-primary" href="{{ path('profesor') }}">Regresar al listado</a>
+            </td>
+        </tr>
+    </table>
+
+    {{ form_end(form) }}
+
+        {#<ul class="record_actions">#}
+        {#<li>#}
+            {#<a class="btn btn-warning" href="{{ path('profesor') }}">Back to the list</a>#}
+        {#</li>#}
+        {#</ul>#}
+
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+//            $('[data-toggle=offcanvas]').click(function() {
+            $('#admin-home').removeClass();
+            $('#new-prof').toggleClass('active');
+//            });
+        });
+    </script>
+{% endblock %}

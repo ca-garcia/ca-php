@@ -1,0 +1,22 @@
+.navbar-brand{
+    color: #ffffff !important;
+}
+.navbar-brand:hover{
+    color: #999 !important;
+}
+#mimenu{
+    margin: 0 auto;
+    width: 85%;
+}
+#mimenu ul li.active a{
+    background-color: #444 !important;
+}
+.fullwidth{
+    width: 100%;
+}
+.pos-right{
+    float: right;
+}
+.pos-top{
+    margin-top: 100px;
+}

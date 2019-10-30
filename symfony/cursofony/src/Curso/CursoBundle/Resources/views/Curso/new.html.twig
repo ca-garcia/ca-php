@@ -1,0 +1,84 @@
+{% extends 'CursoBundle:Admin:admin_layout.html.twig' %}
+
+{% block title %}Nuevo Curso!{% endblock %}
+
+{% block body -%}
+<div class="container pos-top">
+    <div class="page-header">
+        <h1>Nuevo Curso<small> Administraci&oacute;n</small></h1>
+    </div>
+
+    {#{{ form(form) }}#}
+    {{ form_start(form) }}
+
+    <table>
+        <tr>
+            <td> {{ form_label(form.nombre) }} </td>
+            <td> {{ form_widget(form.nombre) }} </td>
+            <td> {{ form_errors(form.nombre) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.descripcion) }} </td>
+            <td> {{ form_widget(form.descripcion) }} </td>
+            <td> {{ form_errors(form.descripcion) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.fechai) }} </td>
+            <td> {{ form_widget(form.fechai) }} </td>
+            <td> {{ form_errors(form.fechai) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.fechaf) }} </td>
+            <td> {{ form_widget(form.fechaf) }} </td>
+            <td> {{ form_errors(form.fechaf) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.hora) }} </td>
+            <td> {{ form_widget(form.hora) }} </td>
+            <td> {{ form_errors(form.hora) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.direccion) }} </td>
+            <td> {{ form_widget(form.direccion) }} </td>
+            <td> {{ form_errors(form.direccion) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.profesor) }} </td>
+            <td> {{ form_widget(form.profesor) }} </td>
+            <td> {{ form_errors(form.profesor) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(form.usuarios) }} </td>
+            <td> {{ form_widget(form.usuarios) }} </td>
+            <td> {{ form_errors(form.usuarios) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_widget(form.Insertar) }} </td>
+            <td>
+                <a class="btn btn-sm btn-primary" href="{{ path('curso') }}">Regresar al listado</a>
+            </td>
+        </tr>
+    </table>
+
+    {{ form_end(form) }}
+
+        {#<ul class="record_actions">#}
+    {#<li>#}
+        {#<a class="btn btn-primary" href="{{ path('curso') }}">Back to the list</a>#}
+    {#</li>#}
+{#</ul>#}
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+<script type="text/javascript">
+    $(document).ready(function() {
+//            $('[data-toggle=offcanvas]').click(function() {
+        $('#admin-home').removeClass();
+        $('#new-curso').toggleClass('active');
+//            });
+    });
+</script>
+{% endblock %}

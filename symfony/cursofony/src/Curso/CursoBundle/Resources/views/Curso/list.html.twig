@@ -1,0 +1,147 @@
+{% extends 'CursoBundle:Default:base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {#<link href="{{ asset('bundles/curso/css/jumbotron.css') }}" rel="stylesheet" type="text/css" />#}
+    {#<link href="{{ asset('bundles/curso/css/style.css') }}" rel="stylesheet" type="text/css" />#}
+    <link href="{{ asset('bundles/curso/notification/css/normalize.css') }}" rel="stylesheet" type="text/css" />
+    {#<link href="{{ asset('bundles/curso/notification/css/demo.css') }}" rel="stylesheet" type="text/css" />#}
+    <link href="{{ asset('bundles/curso/notification/css/ns-default.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('bundles/curso/notification/css/ns-style-growl.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('bundles/curso/css/notification.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block title %}Listado de Cursos!{% endblock %}
+
+{% block body %}
+
+    <div class="container pos-top">
+        <!-- Example row of columns -->
+        {% for mensaje in app.session.flashbag.get('info') %}
+            <p class="info">{{ mensaje }}</p>
+        {% endfor %}
+        <div class="row">
+            {% for curso in cursos %}
+            <div class="col-lg-4" style="width: 80%">
+                <hr>
+                <h2>{{ curso.nombre }}</h2>
+                <p></p>
+                <dl class="dl-horizontal">
+                    <dt>Description</dt>
+                    <dd>{{ curso.descripcion }}</dd>
+                    <dt>Profesor:</dt>
+                    {% if curso.profesor is not empty %}
+                    <dd><a target="_blank" href="{{ path('get_profesor', {'id': curso.profesor.id }) }}">{{ curso.profesor }}</a></dd>
+                        {% else %}
+                            <dd><b><em>Sin profesor.</em></b></dd>
+                    {% endif %}
+                    {#<dd>Donec id elit non mi porta gravida at eget metus.</dd>#}
+                    <dt>Fecha Inicio:</dt>
+                    <dd>{{ curso.fechai |date('d/m/Y')}}</dd>
+                    <dt>Fecha Fin:</dt>
+                    <dd>{{ curso.fechaf |date('d/m/Y')}}</dd>
+                    <dt>Hora:</dt>
+                    <dd>{{ curso.hora |date('H:i')}}</dd>
+                    <dt>Direcci&oacute;n:</dt>
+                    <dd>{{ curso.direccion }}
+                        {% if app.user %}
+                        <p class="pos-right"><a class="btn-sm btn-primary" href="{{ path('inscription', {'userid': app.user.id,'cursoid': curso.id }) }}">Inscribirse al curso</a></p>
+                        {% endif %}
+                    </dd>
+
+                </dl>
+                {#<p><a class="btn-sm btn-primary" href="#">Ver detalles &raquo;</a></p>#}
+                {#<hr>#}
+            </div>
+            {% endfor %}
+            {#<div class="col-lg-4">#}
+                {#<h2>Heading</h2>#}
+                {#<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>#}
+                {#<p><a class="btn btn-default" href="#">View details &raquo;</a></p>#}
+            {#</div>#}
+        </div>
+
+
+    </div> <!-- /container -->
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('bundles/curso/notification/js/modernizr.custom.js') }}"> </script>
+    <script src="{{ asset('bundles/curso/notification/js/classie.js') }}"> </script>
+    <script src="{{ asset('bundles/curso/notification/js/notificationFx.js') }}"> </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+//            $('[data-toggle=offcanvas]').click(function() {
+            $('#menu-cursos').toggleClass('active');
+            $('#menu-portada').removeClass();
+//            });
+
+            {% if error is not empty %}
+            setTimeout( function() {
+                {#{% for mensaje in app.session.flashbag.get('info') %}#}
+                // create the notification
+                var notification = new NotificationFx({
+//                    message : '<p>Hello there! I\'m a classic notification but I have some elastic jelliness thanks to <a href="http://bouncejs.com/">bounce.js</a>. </p>',
+
+                {% set error2 = app.session.flashbag.get('info') %}
+                    {#{% for mensaje in app.session.flashbag.get('info') %}#}
+                    {#message : '<p>{{ mensaje }}. </p>',#}
+                    {#&#123;&#35;<p class="info">{{ mensaje }}</p>&#35;&#125;#}
+                    {#{% endfor %}#}
+                    message: '<p> {{ error |raw}} </p>',
+                    layout : 'growl',
+                    effect : 'jelly',
+                    type : 'notice', // notice, warning, error or success
+                    ttl: 10000, // time to dismiss
+                    onClose : function() {
+//                        bttn.disabled = false;
+                    }
+                });
+
+                // show the notification
+                notification.show();
+                {#{% endfor %}#}
+            }, 600 );
+            {% endif %}
+
+
+        });
+    </script>
+    <script>
+//        (function() {
+//            var bttn = document.getElementById( 'notification-trigger' );
+//
+//            // make sure..
+//            bttn.disabled = false;
+//
+//            bttn.addEventListener( 'click', function() {
+//                // simulate loading (for demo purposes only)
+//                classie.add( bttn, 'active' );
+//                setTimeout( function() {
+//
+////                    classie.remove( bttn, 'active' );
+//
+//                    // create the notification
+//                    var notification = new NotificationFx({
+//                        message : '<p>Hello there! I\'m a classic notification but I have some elastic jelliness thanks to <a href="http://bouncejs.com/">bounce.js</a>. </p>',
+//                        layout : 'growl',
+//                        effect : 'jelly',
+//                        type : 'notice', // notice, warning, error or success
+//                        onClose : function() {
+//                            bttn.disabled = false;
+//                        }
+//                    });
+//
+//                    // show the notification
+//                    notification.show();
+//
+//                }, 1200 );
+
+//                // disable the button (for demo purposes only)
+//                this.disabled = true;
+//            } );
+//        })();
+    </script>
+{% endblock %}
