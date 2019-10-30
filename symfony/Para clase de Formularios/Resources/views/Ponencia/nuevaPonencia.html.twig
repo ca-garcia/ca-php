@@ -1,0 +1,110 @@
+{# nuevaPonencia.html.twig #}
+{% extends 'DesymfonyBundle:Default:base.html.twig' %}
+
+{% block titulo %}
+    Nueva ponencia | {{ parent() }}
+{% endblock %}
+
+{% block estilos %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/desymfony/css/registro.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block encabezado %}  Datos de la ponencia y el ponente:  {% endblock %}
+
+{% block contenido %}
+
+    {{ form_start(formulario, {'attr': {'novalidate': 'novalidate'}}) }}
+
+    <table>
+        <tr>
+            <td colspan="3"> Datos de la ponencia </td>
+            <td colspan="3"> Datos del ponente </td>
+
+        </tr>
+        <tr>
+            <td> {{ form_label(formulario.titulo) }} </td>
+            <td> {{ form_widget(formulario.titulo) }} </td>
+            <td> {{ form_errors(formulario.titulo) }}</td>
+
+            <td> {{ form_label(formulario.ponente.nombre) }} </td>
+            <td> {{ form_widget(formulario.ponente.nombre) }} </td>
+            <td> {{ form_errors(formulario.ponente.nombre) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(formulario.slug) }} </td>
+            <td> {{ form_widget(formulario.slug) }} </td>
+            <td> {{ form_errors(formulario.slug) }}</td>
+
+            <td> {{ form_label(formulario.ponente.apellidos) }} </td>
+            <td> {{ form_widget(formulario.ponente.apellidos) }} </td>
+            <td> {{ form_errors(formulario.ponente.apellidos) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(formulario.descripcion) }} </td>
+            <td> {{ form_widget(formulario.descripcion) }} </td>
+            <td> {{ form_errors(formulario.descripcion) }}</td>
+
+            <td> {{ form_label(formulario.ponente.telefono) }} </td>
+            <td> {{ form_widget(formulario.ponente.telefono) }} </td>
+            <td> {{ form_errors(formulario.ponente.telefono) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(formulario.fecha) }} </td>
+            <td> {{ form_widget(formulario.fecha) }} </td>
+            <td> {{ form_errors(formulario.fecha) }}</td>
+
+            <td> {{ form_label(formulario.ponente.biografia) }} </td>
+            <td> {{ form_widget(formulario.ponente.biografia) }} </td>
+            <td> {{ form_errors(formulario.ponente.biografia) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(formulario.hora) }} </td>
+            <td> {{ form_widget(formulario.hora) }} </td>
+            <td> {{ form_errors(formulario.hora) }}</td>
+
+            <td> {{ form_label(formulario.ponente.url) }} </td>
+            <td> {{ form_widget(formulario.ponente.url) }} </td>
+            <td> {{ form_errors(formulario.ponente.url) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(formulario.duracion) }} </td>
+            <td> {{ form_widget(formulario.duracion) }} </td>
+            <td> {{ form_errors(formulario.duracion) }}</td>
+
+            <td> {{ form_label(formulario.ponente.email) }} </td>
+            <td> {{ form_widget(formulario.ponente.email) }} </td>
+            <td> {{ form_errors(formulario.ponente.email) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(formulario.idioma) }} </td>
+            <td> {{ form_widget(formulario.idioma) }} </td>
+            <td> {{ form_errors(formulario.idioma) }}</td>
+
+            <td> {{ form_label(formulario.ponente.twitter) }} </td>
+            <td> {{ form_widget(formulario.ponente.twitter) }} </td>
+            <td> {{ form_errors(formulario.ponente.twitter) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(formulario.usuarios) }} </td>
+            <td> {{ form_widget(formulario.usuarios) }} </td>
+            <td> {{ form_errors(formulario.usuarios) }}</td>
+
+            <td> {{ form_label(formulario.ponente.linkedin) }} </td>
+            <td> {{ form_widget(formulario.ponente.linkedin) }} </td>
+            <td> {{ form_errors(formulario.ponente.linkedin) }}</td>
+        </tr>
+
+        <tr>
+            <td> {{ form_widget(formulario.Guardar) }} </td>
+            <td> {{ form_widget(formulario.Resetear) }} </td>
+            <td> </td>
+        </tr>
+
+    </table>
+
+
+    {{ form_end(formulario) }}
+
+{% endblock %}
+

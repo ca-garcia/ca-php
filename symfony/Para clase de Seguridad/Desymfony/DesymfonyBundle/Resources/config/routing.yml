@@ -1,0 +1,57 @@
+desymfony_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: DesymfonyBundle:Default:index }
+
+bd:
+  path: /prueba/bd
+  defaults: { _controller: DesymfonyBundle:Default:pruebaBD }
+
+estatica:
+  path: /sitio/{nombre}
+  defaults: { _controller: DesymfonyBundle:Default:estatica }
+
+ponentes:
+  path: /ponentes
+  defaults: { _controller: DesymfonyBundle:Ponente:listar }
+
+
+registro:
+  path: /registro
+  defaults: { _controller: DesymfonyBundle:Usuario:registro }
+
+
+procesaForm:
+  path: /procesaForm
+  defaults: { _controller: DesymfonyBundle:Default:procesa }
+
+saludo:
+  path: /hola/{nombre}/{apellido}
+  defaults: { _controller: DesymfonyBundle:Default:saludo }
+
+notificaRegistro:
+  path: /notificaRegistro
+  defaults: { _controller: DesymfonyBundle:Usuario:notificar }
+
+login:
+  path: /login
+  defaults: { _controller: DesymfonyBundle:Usuario:login }
+
+check_path:
+  path: /check
+
+logout:
+  path: /logout
+
+portada:
+  path: /
+  defaults: { _controller: DesymfonyBundle:Default:portada }
+
+ponencias:
+  path: /ponencias
+  defaults: { _controller: DesymfonyBundle:Ponencia:listar }
+
+perfil:
+  path: /perfil
+  defaults: { _controller: DesymfonyBundle:Usuario:perfil }
+
+

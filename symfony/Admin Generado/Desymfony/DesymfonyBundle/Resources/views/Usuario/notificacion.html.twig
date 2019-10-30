@@ -1,0 +1,26 @@
+
+{# notificacion.html.twig #}
+{% extends 'DesymfonyBundle:Default:base.html.twig' %}
+
+{% block titulo %}
+    Notificación | {{ parent() }}
+{% endblock %}
+
+{% block estilos %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/desymfony/css/alto.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+
+{% block encabezado %}  Notificación:  {% endblock %}
+
+{% block contenido %}
+
+    <p> Sus datos fueron registrados satisfactoriamente! </p>
+
+    <p>  <b> Nombre: </b> {{ nombre }} </p>
+    <p>  <b> E-mail: </b> {{ email }} </p>
+
+
+
+{% endblock %}

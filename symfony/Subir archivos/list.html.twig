@@ -1,0 +1,52 @@
+{% extends "DesymfonyBundle:Default:layout_admin.html.twig" %}
+
+
+{% block encabezado %} Datos de las ponencias {% endblock %}
+
+{% block contenido %}
+
+    <div id='contenido'>
+
+        <table border=1>
+            <tr>
+                <th> Fecha/Hora </th>
+                <th> Titulo</th>
+                <th> Idioma </th>
+                <th> Apuntados </th>
+				<th> Foto </th>
+                <th> Acciones </th>
+            </tr>
+
+            {% for ponencia in ponencias %}
+                <tr>
+
+                    <td> {{ ponencia.fecha | date('d/m/Y') }} {{ ponencia.hora | date('H:i:s') }} </td>
+                    <td> <a href="{{ path('admin_ponencia_edit', {'id': ponencia.id }) }}"> {{ ponencia.titulo }} </a> </td>
+                    <td> {{ idiomas[ponencia.idioma] }} </td>
+                    <td> {{ ponencia.usuarios | length }} </td>
+					<td> 
+					{% if ponencia.WebPath is not empty %}
+						<img src="{{ asset(ponencia.WebPath) }}" width='100'> 
+					{% else %}
+						No disponible
+					{% endif %}	
+					</td>
+                    <td>
+                        <a href="{{ path('admin_ponencia_show', {'id': ponencia.id }) }}"> Ver apuntados </a> &nbsp;&nbsp;
+                        <a href=""> Borrar </a>
+                    </td>
+
+                </tr>
+            {% else %}
+
+                <tr>
+                    <td colspan="5"> No existen ponencias  </td>
+                </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+{% endblock %}

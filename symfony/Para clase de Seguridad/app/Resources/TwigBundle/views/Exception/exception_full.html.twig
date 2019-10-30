@@ -1,0 +1,30 @@
+{% extends 'DesymfonyBundle:Default:base.html.twig' %}
+
+
+{% block titulo %}
+    Error!  | {{ parent() }}
+{% endblock %}
+
+{% block estilos %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/desymfony/css/alto.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block encabezado %}  Ha ocurrido un error:  {% endblock %}
+
+{% block contenido %}
+
+    {#{{ exception.message }} ({{ status_code }} {{ status_text }})#}
+
+    {% if exception.message == 'Access Denied' %}
+
+        <p> Acceso Denegado. Revise su usuario y contraseña y vuelva a intentarlo </p>
+
+    {% else %}
+
+        <p> {{ exception.message }} ({{ status_code }} {{ status_text }}) </p>
+
+
+    {% endif %}
+
+{% endblock %}

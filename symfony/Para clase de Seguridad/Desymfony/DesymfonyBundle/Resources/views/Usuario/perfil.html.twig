@@ -1,0 +1,26 @@
+{# perfil.html.twig #}
+{% extends 'DesymfonyBundle:Default:base.html.twig' %}
+
+{% block titulo %}
+    Perfil de usuario | {{ parent() }}
+{% endblock %}
+
+{% block estilos %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/desymfony/css/alto.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block encabezado %}  Estos son sus datos:  {% endblock %}
+
+{% block contenido %}
+
+
+
+<p> <b>Nombre y apellidos:</b> {{ usuario.nombre }} {{ usuario.apellidos }} <p>
+<p> <b>DNI:</b> {{ usuario.dni }} <p>
+<p> <b>Dirección:</b> {{ usuario.direccion }} <p>
+<p> <b>Tel&eacute;fono:</b> {{ usuario.telefono }} <p>
+<p> <b>e-mail:</b> <a href="mailto:{{ usuario.email }}">{{ usuario.email }} </a> <p>
+
+
+{% endblock %}

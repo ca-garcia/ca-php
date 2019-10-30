@@ -1,0 +1,10 @@
+
+/* registro.css */
+
+form *{
+    margin: 5px;
+}
+
+[type = submit] {
+    float:left;
+}

@@ -1,0 +1,89 @@
+/* base.css */
+
+body {
+    background-color: #6c6159;
+    margin: 0;
+    font-family: verdana, arial, helvetica;
+}
+
+
+header{
+    background-color: black;
+    height: 60px;
+}
+
+
+nav a, #separador {
+    margin-right: 10pt;
+    float: left;
+}
+
+nav a{
+    text-decoration: none;
+    color: white;
+}
+
+nav a:first-child{
+    margin-left: 10px;
+}
+
+#menu{
+    background-color: darkred;
+    height: 30px;
+}
+
+#menu a:hover{
+    font-size: 1.2em;
+}
+
+
+h1{
+    font-size: 1.5em;
+    color: black;
+}
+
+header div {
+    color: white;
+    font-weight: bold;
+    font-size: 2em;
+    margin-left: 10px;
+    padding-top: 10px;
+}
+
+#logo {
+    float: left;
+    margin: 5px;
+    padding-top: 0px;
+}
+
+#logo img{
+    height: 50px;
+
+}
+
+article{
+    height: auto;
+    margin: 20px;
+    clear:both;
+
+}
+
+footer{
+    background-color: darkred;
+    margin-bottom: 0;
+}
+
+footer div{
+    color: lightyellow;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-left: 10px;
+}
+
+
+#contenedor{
+    margin: auto;
+    width: 900px;
+    background-color: #ccf;
+
+}

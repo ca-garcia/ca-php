@@ -1,0 +1,74 @@
+{# registro.html.twig #}
+{% extends 'DesymfonyBundle:Default:base.html.twig' %}
+
+{% block titulo %}
+    Registro de usuario | {{ parent() }}
+{% endblock %}
+
+{% block estilos %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/desymfony/css/registro.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block encabezado %}  Sus datos:  {% endblock %}
+
+{% block contenido %}
+
+    {{ form_start(formulario, {'attr': {'novalidate': 'novalidate'}}) }}
+
+    <table>
+
+        <tr>
+            <td> {{ form_label(formulario.nombre) }} </td>
+            <td> {{ form_widget(formulario.nombre) }} </td>
+            <td> {{ form_errors(formulario.nombre) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(formulario.apellidos) }} </td>
+            <td> {{ form_widget(formulario.apellidos) }} </td>
+            <td> {{ form_errors(formulario.apellidos) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(formulario.direccion) }} </td>
+            <td> {{ form_widget(formulario.direccion) }} </td>
+            <td> {{ form_errors(formulario.direccion) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(formulario.telefono) }} </td>
+            <td> {{ form_widget(formulario.telefono) }} </td>
+            <td> {{ form_errors(formulario.telefono) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(formulario.dni) }} </td>
+            <td> {{ form_widget(formulario.dni) }} </td>
+            <td> {{ form_errors(formulario.dni) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(formulario.email) }} </td>
+            <td> {{ form_widget(formulario.email) }} </td>
+            <td> {{ form_errors(formulario.email) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(formulario.password['password']) }} </td>
+            <td> {{ form_widget(formulario.password['password']) }} </td>
+            <td> {{ form_errors(formulario.password['password']) }}</td>
+        </tr>
+        <tr>
+            <td> {{ form_label(formulario.password['repetir_password']) }} </td>
+            <td> {{ form_widget(formulario.password['repetir_password']) }} </td>
+            <td> {{ form_errors(formulario.password['repetir_password']) }}</td>
+        </tr>
+
+        <tr>
+            <td> {{ form_widget(formulario.Guardar) }} </td>
+            <td> {{ form_widget(formulario.Resetear) }} </td>
+            <td> </td>
+        </tr>
+
+    </table>
+
+
+    {{ form_end(formulario) }}
+
+{% endblock %}
+

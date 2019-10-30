@@ -1,0 +1,37 @@
+{# ponentes.html.twig #}
+{% extends 'DesymfonyBundle:Default:base.html.twig' %}
+
+{% block titulo %}
+    Datos de ponentes | {{ parent() }}
+{% endblock %}
+
+
+{% block estilos %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/desymfony/css/ponentes.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+
+
+{% block encabezado %}
+
+    {% for mensaje in app.session.flashbag.get('info') %}
+        <p class="info">{{ mensaje }}</p>
+    {% endfor %}
+
+    Datos de los ponentes:
+{% endblock %}
+
+{% block contenido %}
+
+    {% for ponente in ponentes %}
+
+        <p> <b>Nombre y apellidos:</b> {{ ponente.nombre }} {{ ponente.apellidos }} <p>
+        <p> <b>Tel&eacute;fono:</b> {{ ponente.telefono }} <p>
+        <p> <b>e-mail:</b> <a href="mailto:{{ ponente.email }}">{{ ponente.email }} </a> <p>
+
+        <br>
+
+    {% endfor %}
+{% endblock %}
+

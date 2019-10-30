@@ -1,0 +1,41 @@
+{# portada.html.twig #}
+{% extends 'DesymfonyBundle:Default:base.html.twig' %}
+
+{% block titulo %}
+    Portada | {{ parent() }}
+{% endblock %}
+
+{% block estilos %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/desymfony/css/portada.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block encabezado %}
+
+    <div id = "saludo">
+
+        {% if usuario is not empty %}
+            Hola {{ usuario.nombre }} {{ usuario.apellidos }}
+        {% endif %}
+
+    </div>
+
+   Bienvenido a Desymfony. Aquí podrá encontrar nuestras ponencias y apuntarse en aquellas que desee.
+
+{% endblock %}
+
+{% block contenido %}
+
+    <h3> Nuestras ponencias: </h3>
+
+    {% for ponencia in ponencias %}
+
+        <p> <b>Título:</b> {{ ponencia.titulo }} <p>
+        <p> <b>Fecha:</b> {{ ponencia.fecha | date('d-m-y') }} <p>
+        <p> <b>Hora:</b> {{ ponencia.hora | date('h.u') }} <p>
+        <p> <b>Duración:</b> {{ ponencia.duracion }} <p>
+
+        <br>
+
+    {% endfor %}
+{% endblock %}

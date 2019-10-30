@@ -1,0 +1,15 @@
+admin_ponencia_list:
+  path: /list
+  defaults: { _controller: DesymfonyBundle:AdminPonencia:list }
+
+admin_ponencia_new:
+  path: /new
+  defaults: { _controller: DesymfonyBundle:AdminPonencia:new }
+
+admin_ponencia_edit:
+  path: /edit/{id}
+  defaults: { _controller: DesymfonyBundle:AdminPonencia:edit }
+
+admin_ponencia_show:
+  path: /show/{id}
+  defaults: { _controller: DesymfonyBundle:AdminPonencia:show }

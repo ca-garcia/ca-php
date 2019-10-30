@@ -1,0 +1,30 @@
+ponencia:
+    path:     /
+    defaults: { _controller: "DesymfonyBundle:Ponencia:index" }
+
+ponencia_show:
+    path:     /{id}/show
+    defaults: { _controller: "DesymfonyBundle:Ponencia:show" }
+
+ponencia_new:
+    path:     /new
+    defaults: { _controller: "DesymfonyBundle:Ponencia:new" }
+
+ponencia_create:
+    path:     /create
+    defaults: { _controller: "DesymfonyBundle:Ponencia:create" }
+    requirements: { _method: post }
+
+ponencia_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DesymfonyBundle:Ponencia:edit" }
+
+ponencia_update:
+    path:     /{id}/update
+    defaults: { _controller: "DesymfonyBundle:Ponencia:update" }
+    requirements: { _method: post|put }
+
+ponencia_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DesymfonyBundle:Ponencia:delete" }
+    requirements: { _method: post|delete }

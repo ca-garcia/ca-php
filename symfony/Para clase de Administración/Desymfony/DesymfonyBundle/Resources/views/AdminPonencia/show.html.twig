@@ -1,0 +1,46 @@
+{# show.html.twig #}
+{% extends "DesymfonyBundle:Default:layout_admin.html.twig" %}
+
+{% block estilos %}
+    {{ parent() }}
+    {% if ponencia.usuarios|length < 8 %}
+        <link href="{{ asset('bundles/desymfony/css/alto.css') }}" rel="stylesheet" type="text/css" />
+    {% endif %}
+{% endblock %}
+
+{% block encabezado %} Usuarios apuntados en la ponencia: {{ ponencia.titulo }}   {% endblock %}
+
+{% block contenido %}
+
+    <table border=1>
+        <tr>
+            <th> # </th>
+            <th> DNI</th>
+            <th> Nombre </th>
+            <th> Teléfono </th>
+            <th> Email </th>
+        </tr>
+
+        {% for usuario in ponencia.usuarios %}
+            <tr>
+
+                <td> {{ loop.index }} </td>
+                <td>  {{ usuario.dni }}  </td>
+                <td> {{ usuario.nombre }} {{ usuario.apellidos }} </td>
+                <td> {{ usuario.telefono }} </td>
+                <td> {{ usuario.email }}  </td>
+
+            </tr>
+        {% else %}
+
+            <tr>
+                <td colspan="5"> No hay ningún usuario apuntado  </td>
+            </tr>
+
+        {% endfor %}
+
+    </table>
+
+
+{% endblock %}
+

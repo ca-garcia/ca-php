@@ -1,0 +1,58 @@
+<?php
+namespace Desymfony\DesymfonyBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="ponencia")
+ */
+class Ponencia
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    protected $id;
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $titulo;
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $slug;
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $descripcion;
+    /**
+     * @ORM\Column(type="date")
+     */
+    protected $fecha;
+    /**
+     * @ORM\Column(type="time")
+     */
+    protected $hora;
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $duracion;
+    /**
+     * @ORM\Column(type="string", length=2)
+     */
+    protected $idioma;
+    /**
+     * @ORM\ManyToOne(targetEntity="Ponente", inversedBy="ponencias")
+     * @ORM\JoinColumn(name="ponente_id", referencedColumnName="id")
+     */
+    protected $ponente;
+    /**
+     * @ORM\ManyToMany(targetEntity="Usuario", inversedBy="ponencias")
+     * @ORM\JoinTable(name="ponencia_usuario",
+     *      joinColumns={@ORM\JoinColumn(name="ponencia_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="usuario_id", referencedColumnName="id")})
+     */
+    protected  $usuarios;
+}
+

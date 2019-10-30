@@ -1,0 +1,35 @@
+{# layout_admin.html.twig #}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>  {% block titulo %} Administración de Desymfony {% endblock %}   </title>
+    {% block estilos %}
+        <link href="{{ asset('bundles/desymfony/css/base.css') }}" rel="stylesheet" type="text/css" />
+    {% endblock %}
+</head>
+<body>
+<div id="contenedor">
+<header>
+    <div id="logo"> <a href="{{ path('admin_portada') }}"> <img src="{{ asset('bundles/desymfony/images/logo.jpg') }}">  </a> </div>
+    <div> Gestión de Desymfony </div>
+</header>
+
+
+<nav id="menu">
+    <a href="{{ path('admin_ponencia_list') }}"> Ponencias </a>
+    <span id="separador"> | </span>
+    <a href="{{ path('portada') }}"> Sitio Público </a>
+</nav>
+
+<article>
+    <h1>   {% block encabezado %}{% endblock %}   </h1>
+    {% block contenido %}{% endblock %}
+</article>
+
+<footer>
+    <div> Desarrollado por DesymfonyTeam  </div>
+</footer>
+</div>
+</body>
+</html>

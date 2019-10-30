@@ -1,0 +1,33 @@
+{# edit.html.twig #}
+{% extends "DesymfonyBundle:Default:layout_admin.html.twig" %}
+
+
+{% block encabezado %} Actualizar datos de la ponencia: {{ ponencia.titulo }}   {% endblock %}
+
+{% block estilos %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/desymfony/css/registro.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block contenido %}
+
+    {% if ponencia is not empty %}
+
+        <p> Ponencia: {{ ponencia.titulo }} </p>
+
+
+        {{ form_start(formulario, {'action': path('admin_ponencia_edit', {'id': ponencia.id }), 'method': 'POST'}) }}
+
+            {{ form_widget(formulario) }}
+
+        {{ form_end(formulario) }}
+
+
+    {% else %}
+
+        <h3> No se ha seleccionado ninguna ponencia </h3>
+
+    {% endif %}
+
+    <div style="clear:both"> </div>
+{% endblock %}

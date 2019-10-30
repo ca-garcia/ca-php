@@ -1,0 +1,30 @@
+{# login.html.twig #}
+{% extends 'DesymfonyBundle:Default:base.html.twig' %}
+
+{% block titulo %}
+    Iniciar sesión | {{ parent() }}
+{% endblock %}
+
+{% block estilos %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/desymfony/css/alto.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block encabezado %}  Accede:  {% endblock %}
+
+{% block contenido %}
+
+    {% if error is not empty %}
+        {{ error.message }}
+    {% endif %}
+
+
+    <form action="{{ path('check_path') }}" method="POST">
+
+        <p> Email <input type="text" name="_username" value="{{ last_username }}"/> </p>
+        <p> Contraseña <input type="password" name="_password"/> </p>
+        <p>  <input type="submit" value="Entrar"/> </p>
+
+    </form>
+
+{% endblock %}

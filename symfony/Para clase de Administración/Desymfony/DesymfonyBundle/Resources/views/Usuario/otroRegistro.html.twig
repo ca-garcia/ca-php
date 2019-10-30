@@ -1,0 +1,20 @@
+{# registro.html.twig #}
+{% extends 'DesymfonyBundle:Default:base.html.twig' %}
+
+{% block titulo %}
+    Registro de usuario | {{ parent() }}
+{% endblock %}
+
+{% block estilos %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/desymfony/css/registro.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block encabezado %}  Sus datos:  {% endblock %}
+
+{% block contenido %}
+
+    {{ form(formulario) }}
+
+{% endblock %}
+

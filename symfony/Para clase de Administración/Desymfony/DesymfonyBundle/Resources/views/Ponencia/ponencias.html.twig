@@ -1,0 +1,24 @@
+{# ponencias.html.twig #}
+{% extends 'DesymfonyBundle:Default:base.html.twig' %}
+
+{% block titulo %}
+    Datos de ponencias | {{ parent() }}
+{% endblock %}
+
+{% block encabezado %}  Datos de las ponencias:  {% endblock %}
+
+{% block contenido %}
+
+    {% for ponencia in ponencias %}
+
+        <p> <b>Título:</b> {{ ponencia.titulo }} <p>
+        <p> <b>Fecha:</b> {{ ponencia.fecha | date('d-m-y') }} <p>
+        <p> <b>Hora:</b> {{ ponencia.hora | date('h.u') }} <p>
+        <p> <b>Duración:</b> {{ ponencia.duracion }} <p>
+        <p> <b>Ponente:</b> {{ ponencia.ponente.nombre }} <p>
+
+        <br>
+
+    {% endfor %}
+{% endblock %}
+

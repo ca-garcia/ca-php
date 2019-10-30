@@ -1,0 +1,47 @@
+{# base.html.twig #}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>  {% block titulo %} Desymfony {% endblock %}   </title>
+    {% block estilos %}
+        <link href="{{ asset('bundles/desymfony/css/base.css') }}" rel="stylesheet" type="text/css" />
+    {% endblock %}
+
+    {% block scripts %}
+        <script src="{{ asset('bundles/desymfony/js/base.js') }}"> </script>
+    {% endblock %}
+
+</head>
+<body>
+<div id="contenedor">
+    <header>
+        <div id="logo"> <a href="{{ path('portada') }}"> <img src="{{ asset('bundles/desymfony/images/logo.jpg') }}"> </a> </div>
+        <div> Desymfony </div>
+    </header>
+
+    <nav id="menu">
+        <a href="{{ path('ponencias') }}"> Ponencias </a>
+        <span id="separador"> | </span>
+        <a href="{{ path('ponentes') }}"> Ponentes </a>
+        <span id="separador"> | </span>
+        <a href="{{ path('registro') }}"> Registrarse </a>
+        <span id="separador"> | </span>
+        <a href="{{ path('login') }}"> Iniciar Sesión </a>
+        <span id="separador"> | </span>
+        <a href="{{ path('logout') }}"> Cerrar Sesión </a>
+        <span id="separador"> | </span>
+        <a href="{{ path('perfil') }}"> Ver tu perfil </a>
+    </nav>
+
+    <article>
+        <h1>   {% block encabezado %}{% endblock %}   </h1>
+        {% block contenido %}{% endblock %}
+    </article>
+
+    <footer>
+        <div> Desarrollado por DesymfonyTeam  </div>
+    </footer>
+</div>
+</body>
+</html>
